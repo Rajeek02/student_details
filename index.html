@@ -7,123 +7,115 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
-    " rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-300 font-mono " >
-    <div id="container">
-        <h1 class="font-bold text-2xl text-center m-3 p-3">Student Form</h1>
+<body class="bg-gray-300 font-mono p-4 sm:p-6">
+    <div id="container" class="max-w-3xl mx-auto">
+        <h1 class="font-bold text-2xl text-center m-3 p-3 sm:text-3xl">Student Form</h1>
     </div>
-    <!--table>-->
-    <div id="table_content" class="  flex justify-center ">
-        <table >
-            <tr>
-                <td><P   class="p-2">Name:</P></td>
-                <td><input type="text" id="name"  class=" m-1  border border-black solid 1px w-80">
-                </td>
-            </tr>
-            <tr>
-                <td><P  class="p-2">Age:</P></td>
-                <td><input type="text" id="age" class=" m-1  border border-black solid 1px w-80"></td>
-            </tr>
-            <tr>
-                <td><p id="gender">Gender:</p></td>
-                <td>
-                    <input type="radio" name="gender" value="Male">
-                    <span>Male</span>
-    
-                    <input  type="radio" name="gender" value="Male" >
-                    <span>Female</span></td>
-            </tr>
-            <tr>
-                <td><p >Email:</p></td>
-                <td><input type="text"  id="email" class=" m-1  border  border-black solid 1px w-80"></td>
-            </tr>
-            <tr>
-                <td >Course:</td>
-                <td><input type="text" id="course" class=" m-1  border  border-black solid 1px w-80"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button id="btn" class="w-52 bg-green-500 m-3 text-white">Save</button></td>
-                
-            </tr>
-            
-            
-            
+
+    <!-- Form -->
+    <div id="table_content" class="flex justify-center">
+        <div class="w-full max-w-md bg-white p-4 shadow-md rounded-md sm:p-6">
+            <table class="w-full">
+                <tr>
+                    <td><p class="p-2 text-lg sm:text-xl">Name:</p></td>
+                    <td><input type="text" id="name" class="w-full border border-black p-2 rounded-md"></td>
+                </tr>
+                <tr>
+                    <td><p class="p-2 text-lg sm:text-xl">Age:</p></td>
+                    <td><input type="text" id="age" class="w-full border border-black p-2 rounded-md"></td>
+                </tr>
+                <tr>
+                    <td><p class="p-2 text-lg sm:text-xl">Gender:</p></td>
+                    <td class="flex gap-4">
+                        <label><input type="radio" name="gender" value="Male"> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="p-2 text-lg sm:text-xl">Email:</p></td>
+                    <td><input type="text" id="email" class="w-full border border-black p-2 rounded-md"></td>
+                </tr>
+                <tr>
+                    <td><p class="p-2 text-lg sm:text-xl">Course:</p></td>
+                    <td><input type="text" id="course" class="w-full border border-black p-2 rounded-md"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="btn" class="w-full md:w-52 bg-green-500 text-white py-2 rounded-md hover:bg-green-600">Save</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Output Table -->
+    <div class="overflow-x-auto mt-6">
+        <table id="output" class="w-full border-collapse">
+            <thead>
+                <tr class="bg-white text-black text-left">
+                    <th class="p-3 border rounded-l-md">Name</th>
+                    <th class="p-3 border">Age</th>
+                    <th class="p-3 border">Gender</th>
+                    <th class="p-3 border">Email</th>
+                    <th class="p-3 border">Course</th>
+                    <th class="p-3 border rounded-r-md">Action</th>
+                </tr>
+            </thead>
         </table>
-
     </div>
 
-    <!-- table-2 -->
-    <table id="output" class="w-full border-collapse mt-3">
-        <thead>
-            <tr class="bg-white text-black text-left">
-                <th class="p-3 border rounded-l-md">Name</th>
-                <th class="p-3 border">Age</th>
-                <th class="p-3 border">Gender</th>
-                <th class="p-3 border">Email</th>
-                <th class="p-3 border">Course</th>
-                <th class="p-3 border rounded-r-md">Action</th>
-            </tr>
-        </thead>
-    </table>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btn").addEventListener("click", function () {
-        // Get input values
-        let name = document.getElementById("name").value.trim();
-        let age = document.getElementById("age").value.trim();
-        let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
-        let email = document.getElementById("email").value.trim();
-        let course = document.getElementById("course").value.trim();
+            document.getElementById("btn").addEventListener("click", function () {
+                // Get input values
+                let name = document.getElementById("name").value.trim();
+                let age = document.getElementById("age").value.trim();
+                let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+                let email = document.getElementById("email").value.trim();
+                let course = document.getElementById("course").value.trim();
 
-        // Validate input (at least name should be entered)
-        if (name === "") {
-            alert("Please enter a name!");
-            return;
-        }
+                // Validate input (at least name should be entered)
+                if (name === "") {
+                    alert("Please enter a name!");
+                    return;
+                }
 
-        // Get table reference
-        let table = document.getElementById("output");
+                // Get table reference
+                let table = document.getElementById("output");
 
-        // Create a new row
-        let newRow = document.createElement("tr");
-        newRow.className = "bg-gray-100 text-black border";
+                // Create a new row
+                let newRow = document.createElement("tr");
+                newRow.className = "bg-gray-100 text-black border";
 
-        // Insert table data
-        newRow.innerHTML = `
-            <td class="p-3 border">${name}</td>
-            <td class="p-3 border">${age}</td>
-            <td class="p-3 border">${gender}</td>
-            <td class="p-3 border">${email}</td>
-            <td class="p-3 border">${course}</td>
-            <td class="p-3 border text-center">
-                <button class="delete-btn text-red-500">Delete</button>
-            </td>
-        `;
+                // Insert table data
+                newRow.innerHTML = `
+                    <td class="p-3 border">${name}</td>
+                    <td class="p-3 border">${age}</td>
+                    <td class="p-3 border">${gender}</td>
+                    <td class="p-3 border">${email}</td>
+                    <td class="p-3 border">${course}</td>
+                    <td class="p-3 border text-center">
+                        <button class="delete-btn text-red-500">Delete</button>
+                    </td>
+                `;
 
-        // Append row to table
-        table.appendChild(newRow);
+                // Append row to table
+                table.appendChild(newRow);
 
-        // Add event listener to delete button
-        newRow.querySelector(".delete-btn").addEventListener("click", function () {
-            newRow.remove();
+                // Add event listener to delete button
+                newRow.querySelector(".delete-btn").addEventListener("click", function () {
+                    newRow.remove();
+                });
+
+                // Clear input fields after saving
+                document.getElementById("name").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("course").value = "";
+                document.querySelectorAll('input[name="gender"]').forEach(el => el.checked = false);
+            });
         });
-
-        // Clear input fields after saving
-        document.getElementById("name").value = "";
-        document.getElementById("age").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("course").value = "";
-        document.querySelectorAll('input[name="gender"]').forEach(el => el.checked = false);
-    });
-});
-
     </script>
-    
-    
 </body>
 </html>
-    
-    
