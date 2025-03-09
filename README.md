@@ -6,6 +6,7 @@ Features:
 ✅ Display student data in a structured table
 ✅You can  also delete  it
 ✅ Simple and clean UI
+link:https://rajeek02.github.io/student_details/
 
 
 
