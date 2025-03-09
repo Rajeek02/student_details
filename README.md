@@ -4,7 +4,8 @@ A simple student management system built with HTML, CSS, and JavaScript. This pr
 Features:
 ✅ Add student details
 ✅ Display student data in a structured table
+✅You can  also delete  it
 ✅ Simple and clean UI
 
-Feel free to contribute and improve the project! 🚀
+
 
